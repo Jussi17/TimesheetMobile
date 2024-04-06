@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimesheetMobileApp.EmployeePage">
+
+    <StackLayout BackgroundColor="LightSeaGreen">
+
+
+        <Frame BackgroundColor="Black" Padding="24" CornerRadius="0">
+            <Label Text="Timesheet app" HorizontalTextAlignment="Center" TextColor="GhostWhite" FontSize="28"></Label>
+        </Frame>
+
+        <Button x:Name="päivitysButton" BackgroundColor="AliceBlue" Text="Päivitä listaus" Clicked="päivitysButton_Clicked"></Button>
+
+        <Label Text="Valitse nimesi listalta" TextColor="GhostWhite" FontSize="20"></Label>
+
+        <Label Text="Haku"
+               TextColor="GhostWhite"
+               FontSize="25"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"></Label>
+
+        <SearchBar x:Name="Hakukentta" Placeholder="Hae etu-tai sukunimellä"
+                   Text=""
+                   BackgroundColor="GhostWhite"
+                   TextColor="DarkCyan"
+                   SearchCommandParameter="{Binding Source={x:Reference Hakukentta}, Path=Text}"
+                   SearchButtonPressed="OnSearchBarButtonPressed"></SearchBar>
+
+        <Label x:Name="emp_lataus"></Label>
+
+        <ListView x:Name="employeeList" BackgroundColor="LightSeaGreen" StyleClass="lista" SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <ContentView Padding="3">
+                            <Frame BorderColor="DarkGray" Padding="3">
+
+                                <StackLayout BackgroundColor="Black" Orientation="Horizontal" Padding="0,5">
+
+                                    <Image Source="{Binding ImageLink}"
+                                   HorizontalOptions="Start"
+                                   WidthRequest="40"
+                                   HeightRequest="40"
+                                   VerticalOptions="StartAndExpand"/>
+
+                                    <Label Text="{Binding FirstName}"
+                                   HorizontalOptions="Center"
+                                   TextColor="White"
+                                   FontSize="20"
+                                   VerticalOptions="StartAndExpand"/>
+
+                                    <Label Text="{Binding LastName}"
+                                   HorizontalOptions="Start"
+                                   TextColor="White"
+                                   FontSize="20"
+                                   VerticalOptions="StartAndExpand"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="saveButton" BackgroundColor="AliceBlue" HorizontalOptions="End" Text="Muista Käyttäjä" Clicked="saveButton_Clicked"></Button>
+        <Button x:Name="clearButton" BackgroundColor="AliceBlue" IsVisible="false" HorizontalOptions="End" Text="Unohda Käyttäjä" Clicked="clearButton_Clicked"></Button>
+        <Button x:Name="navButton" BackgroundColor="AliceBlue" Text="Työtehtäviin" Clicked="navButton_Clicked"></Button>
+    </StackLayout>
+
+</ContentPage>
